@@ -1,0 +1,23 @@
+@import url("http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700");
+@font-face {
+  font-family: 'League Gothic';
+  font-weight: normal;
+  font-style: normal;
+  src: url("../fonts/leaguegothic-webfont.woff") format('woff');
+}
+body {
+  padding: 50px;
+  font-family: 'Leauge Gothic', Arial, sans-serif;
+}
+a {
+  color: $magenta;
+}
+#logo {
+  font: 104px 'Yanone Kaffeesatz';
+  text-transform: uppercase;
+  color: #000;
+  text-shadow: -4px 4px 0 #d7d7d7;
+}
+#site-content {
+  margin: 0 auto;
+}
