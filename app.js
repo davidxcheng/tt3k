@@ -31,6 +31,7 @@ app.use(stylus.middleware({
 	src: 		__dirname + '/public',
 	compile: 	compile
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only

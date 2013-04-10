@@ -1,23 +1,61 @@
+@import url("reset.css");
 @import url("http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700");
 @font-face {
   font-family: 'League Gothic';
   font-weight: normal;
   font-style: normal;
-  src: url("../fonts/leaguegothic-webfont.woff") format('woff');
+  src: url("/fonts/league_gothic.woff") format('woff');
 }
 body {
-  padding: 50px;
-  font-family: 'Leauge Gothic', Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 a {
-  color: $magenta;
+  color: #f0f;
+  text-decoration: none;
 }
-#logo {
-  font: 104px 'Yanone Kaffeesatz';
+a:link,
+a:visited {
+  color: #f0f;
+}
+a:hover,
+a:active {
+  color: #0f0;
+}
+#brand {
+  text-align: center;
+  font: 80px 'Yanone Kaffeesatz';
   text-transform: uppercase;
   color: #000;
   text-shadow: -4px 4px 0 #d7d7d7;
 }
+#main-menu {
+  background: #000;
+  text-align: center;
+  padding: 2px 0;
+}
+#main-menu li {
+  display: inline-block;
+}
+#main-menu a {
+  font-size: 26px;
+  font-family: 'League Gothic';
+  text-transform: uppercase;
+  margin-right: 34px;
+}
+#main-menu a:link,
+a:visited {
+  color: #fff;
+}
+#main-menu a:hover {
+  color: #f00;
+}
 #site-content {
+  max-width: 820px;
   margin: 0 auto;
+}
+h1,
+h2,
+h3 {
+  font-family: 'League Gothic', Arial;
+  text-transform: uppercase;
 }

@@ -1,26 +1,62 @@
+@import url('reset.css')
 @import url('http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700')
 
-$logo-color = magenta
 $gray = #d7d7d7
+$black = #000
+$white = #fff
+$link = magenta
+$menuFont = 'League Gothic'
 
 @font-face
 	font-family 'League Gothic'
 	font-weight normal
 	font-style normal
-	src url('../fonts/leaguegothic-webfont.woff') format('woff')
+	src url('/fonts/league_gothic.woff') format('woff')
 
 body
-	padding: 50px
-	font-family: 'Leauge Gothic', Arial, sans-serif
+	font-family Arial, sans-serif
 
 a
-	color: $magenta
+	color magenta
+	text-decoration none
 
-#logo
-	font 104px 'Yanone Kaffeesatz'
+a:link, a:visited
+	color $link
+
+a:hover, a:active
+	color lime 
+
+#brand
+	text-align center
+	font 80px 'Yanone Kaffeesatz'
 	text-transform uppercase
 	color black
 	text-shadow -4px 4px 0 $gray
 
+#main-menu
+	background $black
+	text-align center
+	padding 2px 0
+
+#main-menu li
+	display inline-block
+
+#main-menu a
+	font-size 26px
+	font-family $menuFont
+	text-transform uppercase
+	margin-right 34px
+
+#main-menu a:link, a:visited
+	color $white
+
+#main-menu a:hover
+	color red
+
 #site-content
+	max-width 820px
 	margin 0 auto
+
+h1, h2, h3
+	font-family 'League Gothic', Arial
+	text-transform uppercase
