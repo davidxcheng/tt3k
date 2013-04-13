@@ -1,10 +1,13 @@
 (function(tt3k, $, d) {
 	tt3k.stadium = d.getElementById('stadium');
+
+	// mark chosen menu item as active
 	tt3k.setActiveMenuItem = function($menuItem) {
 		$('#main-menu .active').removeClass('active');
 		$menuItem.addClass('active');
 	};
 
+	// setup behavior for 
 	function setup() {
 		$('#main-menu a').on('click', function(e) {
 			e.preventDefault();

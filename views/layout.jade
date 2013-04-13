@@ -1,23 +1,26 @@
 doctype 5
-html
+html(data-ng-app='tt3k')
 	head
 		title= title
+		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
-	body
+		script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js')
+		//script(src='/js/tt3k.js')
+		script(src='/js/tt3k-ng.js')
+	body(data-ng-controller='MainCtrl')
 		#brand Trash&nbsp;Talk&nbsp;3000
 		#main-menu
 			ul
 				li 
-					a(href='#') What's up
+					a(href='/') What's up
 				li
 					a(href='#') Game on
 				li
 					a(href='#') Keeping the score
 				li
-					a(href='#') Login
+					a(href='/login') Login
 				li
-					a(href='/signup') Join
-		#stadium
-			block content
-		script(src='/js/tt3k.js')
+					a(href='/sign-up') Sign Up
+		#main-wrapper.ng-view
+		block content

@@ -1,4 +1,32 @@
 extends layout
 
 block content
-	
+	script(id='LoginView', type='text/ng-template')
+		#signup
+			form.form-horizontal
+				.control-group
+					.controls
+						input(type='text', ng-model='credentials.email', placeholder='Email', autofocus)
+				.control-group
+					.controls
+						input(type='text', id='txtPassword', placeholder='Password')
+				.control-group
+					.controls
+						button(type='button', ng-click='signup()', class='btn btn-success') Login
+
+
+	script(id='SignUpView', type='text/ng-template')
+		#signup
+			form.form-horizontal
+				.control-group
+					.controls
+						input(type='text', ng-model='member.name', placeholder='FirstName LastName', autofocus)
+				.control-group
+					.controls
+						input(type='text', ng-model='member.email', placeholder='Email')
+				.control-group
+					.controls
+						input(type='text', ng-model='member.password', placeholder='Password')
+				.control-group
+					.controls
+						button(type='button', ng-click='login()', class='btn btn-success') Sign Up

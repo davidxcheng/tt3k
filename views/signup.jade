@@ -1,3 +1,14 @@
-p
-	| willkommen!
-script(src='/javascripts/tt3k.signup.js')
+div(ng-controller='SignUpCtrl')#signup
+	form.form-horizontal
+		.control-group
+			.controls
+				input(type='text', ng-model='member.name', placeholder='FirstName LastName', autofocus)
+		.control-group
+			.controls
+				input(type='text', id='txtEmail', placeholder='Email')
+		.control-group
+			.controls
+				input(type='text', id='txtPassword', placeholder='Password')
+		.control-group
+			.controls
+				button(type='button', ng-click='signup()', class='btn btn-success') Sign Up
