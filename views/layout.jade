@@ -3,6 +3,7 @@ html
 	head
 		title= title
 		link(rel='stylesheet', href='/stylesheets/style.css')
+		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
 	body
 		#brand Trash&nbsp;Talk&nbsp;3000
 		#main-menu
@@ -13,5 +14,10 @@ html
 					a(href='#') Game on
 				li
 					a(href='#') Keeping the score
-		#site-content
+				li
+					a(href='#') Login
+				li
+					a(href='/signup') Join
+		#stadium
 			block content
+		script(src='/js/tt3k.js')

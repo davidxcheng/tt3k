@@ -1,13 +1,12 @@
-
 /**
  * Module dependencies.
  */
 
-var express = require('express')
-  , routes = require('./routes')
-  , user = require('./routes/user')
-  , http = require('http')
-  , path = require('path');
+var express = require('express'),
+	routes = require('./routes'),
+	user = require('./routes/user'),
+	http = require('http'),
+	path = require('path');
 
 var app = express();
 
@@ -34,10 +33,21 @@ app.use(stylus.middleware({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
+// connect to database
+var mongoClient = require('mongodb').MongoClient;
+mongoClient.connect('mongodb://localhost:27017/tt3k', function (err) {
+	if (!err)
+		console.log('Connected to the database.');
+	else
+		console.log('Failed to connect to database.')
+})
+
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
+
+require('./routes/router').setup(app, mongoClient);
 
 app.get('/', routes.index);
 app.get('/users', user.list);

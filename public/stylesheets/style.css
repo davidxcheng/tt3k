@@ -43,13 +43,16 @@ a:active {
   margin-right: 34px;
 }
 #main-menu a:link,
-a:visited {
+#main-menu a:visited {
   color: #fff;
 }
 #main-menu a:hover {
-  color: #f00;
+  color: #f0f;
 }
-#site-content {
+#main-menu a.active {
+  color: #f0f;
+}
+#stadium {
   max-width: 820px;
   margin: 0 auto;
 }
