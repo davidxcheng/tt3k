@@ -12,15 +12,7 @@ html(data-ng-app='tt3k')
 		#brand Trash&nbsp;Talk&nbsp;3000
 		#main-menu
 			ul
-				li 
-					a(href='/') What's up
-				li
-					a(href='#') Game on
-				li
-					a(href='#') Keeping the score
-				li
-					a(href='/login') Login
-				li
-					a(href='/sign-up') Sign Up
+				li(data-ng-repeat='item in menu')
+					a(href='{{ item.href }}') {{ item.text }}
 		#main-wrapper.ng-view
 		block content

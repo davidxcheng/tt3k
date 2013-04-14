@@ -7,6 +7,12 @@ module.exports = {
 				res.render('signup');
 			});
 
+			server.post('/logout', function(req, res) {
+				req.session.destroy(function(err) {
+					// nothing to do here
+				});
+			});
+
 			server.put('/member', function(req, res) {
 				var member = req.body;
 
@@ -26,16 +32,20 @@ module.exports = {
 			server.post('/login', function(req, res) {
 				var credentials = req.body;
 
-				m.HandleLogin(credentials, function(success) {
-					console.log(success);
-
+				m.HandleLogin(credentials, function(success, member) {
 					if (success) {
-						res.send('OK');
+						req.session.user = member.name;
+						res.send(member.name);
 					}
 					else {
 						res.send(400, 'Login failed:(');
 					}
 				});
+			});
+
+			server.get('/member/current', function(req, res) {
+				console.log(req.session.user);
+				res.send({ name: req.session.user });
 			});
 		}
 }

@@ -74,7 +74,7 @@ module.exports = function() {
 						if (doc) {
 							// Check that password is correct
 							if (crypto.createHmac('sha1', cryptoKey).update(credentials.password).digest('hex') == doc.password) {
-								cb(true);
+								cb(true, doc);
 								return;
 							}
 						}

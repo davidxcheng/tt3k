@@ -5,6 +5,13 @@ block content
 		#start 
 			h1 Hello Betty!
 
+	script(id='ScoresView', type='text/ng-template')
+		#scores
+			#match {{ match.player1.name }}
+		#feedback.hide.alert.alert-warning
+			{{ feedback }}
+			
+
 	script(id='LoginView', type='text/ng-template')
 		#login
 			form.form-horizontal
