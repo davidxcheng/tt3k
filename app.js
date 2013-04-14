@@ -34,35 +34,12 @@ app.use(stylus.middleware({
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-// connect to database
-var mongoClient = require('mongodb').MongoClient;
-mongoClient.connect('mongodb://localhost:27017/tt3k', function (err, db) {
-	if (!err) {
-		console.log('Connected to the database.');
-
-		db.collection('Members', function(err, tbl) {
-
-			//tbl.insert({ name: 'David Cheng', email: 'davidxcheng@gmail.com', pwd: 'aces45' }, { w: 0 });
-
-			tbl.count(function(err, count) {
-				if (err)
-					console.log('hello');
-				console.log('There are ' + count + ' members');
-			});
-		});
-
-		db.close();		
-	}
-	else
-		console.log('Failed to connect to database.')
-})
-
 // development only
 if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-require('./routes/router').setup(app, mongoClient);
+require('./routes/router').setup(app);
 
 app.get('/', routes.index);
 app.get('/users', user.list);

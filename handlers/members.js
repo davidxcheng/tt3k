@@ -1,22 +1,18 @@
-module.exports = function(mongoClient) {
-	if (!mongoClient)
-		throw 'Missing parameter: mongoClient';
+module.exports = function() {
 
-	var dbConfig = require('../config').mongoDb,
-		crypto = require('crypto'),
-		cryptoKey = 'shake';
+	var mongoClient = require('mongodb').MongoClient,
+		dbConfig 	= require('../config').mongoDb,
+		crypto 		= require('crypto'),
+		cryptoKey 	= 'shake';
 
 	// Make sure no duplicate members can be inserted
 	mongoClient.connect(dbConfig.connectionString, function(err, db) {
 		db.collection(dbConfig.collections.Members, function(err, collection) {
-			collection.ensureIndex({ 'email': 1 }, { unique: true, w: 0 });
-
-			collection.indexInformation(function(err, info) {
-				console.log(JSON.stringify(info));
-			});
+			collection.ensureIndex({ 'email': 1 }, { unique: true, w: 0, background: true });
 		});
 	});		
 
+	// Validates new member
 	var validateMember = function(member) {
 		if (!member)
 			return false;
@@ -68,6 +64,24 @@ module.exports = function(mongoClient) {
 
 			if (cb && typeof cb == 'function')
 				cb(error);
+		},
+		HandleLogin: function(credentials, cb) {
+			
+			if (credentials && credentials.username && credentials.password) {
+				// Find member
+				mongoClient.connect(dbConfig.connectionString, function(err, db) {
+					db.collection(dbConfig.collections.Members).findOne({ email: credentials.username }, function(err, doc) {
+						if (doc) {
+							// Check that password is correct
+							if (crypto.createHmac('sha1', cryptoKey).update(credentials.password).digest('hex') == doc.password) {
+								cb(true);
+								return;
+							}
+						}
+						cb(false);
+					});
+				});
+			}
 		}
 	};
 }

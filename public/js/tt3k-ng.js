@@ -1,13 +1,18 @@
 angular.module('tt3k', [], function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/login', {
-			templateUrl: 'LoginView',
-			controller: 'tt3k.LoginCtrl'
+			templateUrl: 	'LoginView',
+			controller: 	'tt3k.LoginCtrl'
 		})
 
 		.when('/sign-up', {
-			templateUrl: 'SignUpView',
-			controller: 'tt3k.SignUpCtrl'
+			templateUrl: 	'SignUpView',
+			controller: 	'tt3k.SignUpCtrl'
+		})
+
+		.when('/', {
+			templateUrl: 	"StartView",
+			controller: 	"tt3k.MainCtrl" 
 		});
 
 	$locationProvider.html5Mode(true);
@@ -24,7 +29,14 @@ var tt3k = (function() {
 		$scope.credentials = {};
 
 		$scope.login = function() {
-			alert($scope.credentials.email);
+			$http.post('/login', $scope.credentials)
+				.success(function() {
+					$location.path('/');
+				})
+				.error(function(data, status) {
+					$scope.feedback = data || 'Something went wrong!';
+					$('#feedback').removeClass('hide');
+				});
 		}
 	}
 
@@ -32,9 +44,15 @@ var tt3k = (function() {
 		$scope.member = {};
 
 		$scope.signUp = function() {
-			$http.put('/member', $scope.member);
+			$http.put('/member', $scope.member)
+				.success(function() {
+					$location.path('/login');
+				})
+				.error(function(data, status) {
+					$scope.feedback = data || 'Something went wrong!';
+					$('#feedback').removeClass('hide');
+				});
 		}
-		
 	}
 
 	return {
