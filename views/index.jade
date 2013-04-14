@@ -2,17 +2,17 @@ extends layout
 
 block content
 	script(id='LoginView', type='text/ng-template')
-		#signup
+		#login
 			form.form-horizontal
 				.control-group
 					.controls
-						input(type='text', ng-model='credentials.email', placeholder='Email', autofocus)
+						input(type='text', ng-model='credentials.userName', placeholder='Email', autofocus)
 				.control-group
 					.controls
-						input(type='text', id='txtPassword', placeholder='Password')
+						input(type='text', ng-model='credentials.password', placeholder='Password')
 				.control-group
 					.controls
-						button(type='button', ng-click='signup()', class='btn btn-success') Login
+						button(type='button', ng-click='login()', class='btn btn-success') Login
 
 
 	script(id='SignUpView', type='text/ng-template')
@@ -20,13 +20,13 @@ block content
 			form.form-horizontal
 				.control-group
 					.controls
-						input(type='text', ng-model='member.name', placeholder='FirstName LastName', autofocus)
+						input(type='text', ng-model='member.name', placeholder='FirstName LastName', maxlength=80, required, autofocus)
 				.control-group
 					.controls
-						input(type='text', ng-model='member.email', placeholder='Email')
+						input(type='text', ng-model='member.email', placeholder='Email', pattern='.+@.+\.[a-z]{2,3}', maxlength=80, required)
 				.control-group
 					.controls
-						input(type='text', ng-model='member.password', placeholder='Password')
+						input(type='password', ng-model='member.password', placeholder='Password', pattern='.{6,}', maxlength=80, required)
 				.control-group
 					.controls
-						button(type='button', ng-click='login()', class='btn btn-success') Sign Up
+						button(type='button', ng-click='signUp()', class='btn btn-success') Sign Up
