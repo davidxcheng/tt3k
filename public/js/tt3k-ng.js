@@ -43,7 +43,6 @@ var tt3k = (function() {
 
 		var menu = [
 			{ href: '/', text: "What's Up"},
-			{ href: '/challenge', text: "Game On"},
 			{ href: '/scores', text: 'Keeping The Score' },
 			{ href: '/login', text: 'Login' },
 			{ href: '/sign-up', text: 'Sign Up'}
@@ -51,7 +50,6 @@ var tt3k = (function() {
 
 		var menu2 = [
 			{ href: '/', text: "What's Up"},
-			{ href: '/challenge', text: "Game On"},
 			{ href: '/scores', text: 'Keeping The Score' },
 			{ href: '/logout', text: 'Log Out' }
 		];

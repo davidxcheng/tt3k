@@ -36,6 +36,13 @@ module.exports = (function() {
 					sort: { gameday: -1 },
 					limit: limit
 				}).toArray(function(err, docs) {
+					var scores = docs.map(function(score) {
+						score.sets = score.sets.map(function(set) {
+							return set.gamesWonByPlayer1 + '-' + set.gamesWonByPlayer2;
+						});
+
+						return score;
+					});
 					cb(docs);
 					db.close();
 				});
