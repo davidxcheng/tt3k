@@ -21,28 +21,6 @@ angular.module('tt3k', [], function($routeProvider, $locationProvider) {
 		});
 
 	$locationProvider.html5Mode(true);
-})
-.service('menuService', function() {
-	var setActiveMenuItem = function($menuItem) {
-		$('#main-menu .active').removeClass('active');
-		$menuItem.addClass('active');
-	};
-
-	var setMenuBasedOnContext = function(isLoggedIn) {
-		//if (isLoggedIn)
-
-	};
-
-	$(document).ready(function() {
-		$('#main-menu a').on('click', function(e) {
-			e.preventDefault();
-			setActiveMenuItem($(this));
-		});
-	});
-
-	return {
-		setActiveMenuItem: setActiveMenuItem
-	};
 });
 
 var tt3k = (function() {
@@ -88,10 +66,10 @@ var tt3k = (function() {
 
 		$http.get('/member/current')
 			.success(function(data, status) {
-				$scope.match.player1.name = data.name;
-			})
-			.error(function(data, status) {
-				$scope.feedback = "You have to login in before you can submit a score."
+				if (data.name)
+					$scope.match.player1.name = data.name;
+				else
+					$scope.feedback = "You have to login in before you can submit a score."
 			});
 	};
 
@@ -114,7 +92,7 @@ var tt3k = (function() {
 		$scope.signUp = function() {
 			$http.put('/member', $scope.member)
 				.success(function() {
-					$location.path('/login');
+					$location.path('/scores');
 				})
 				.error(function(data, status) {
 					$scope.feedback = data || 'Something went wrong!';

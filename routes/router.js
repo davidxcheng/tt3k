@@ -20,7 +20,7 @@ module.exports = {
 					if (!err) {
 						// Logon the new member
 						req.session.user = member.name;
-						res.send(201, 'Creted');
+						res.send(201, 'Created');
 					}
 					else {
 						console.log('Failed to create member. ' + JSON.stringify(err));
