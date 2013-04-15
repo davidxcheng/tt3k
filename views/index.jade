@@ -12,7 +12,7 @@ block content
 					.player {{ match.player1.name }}
 					.vs vs
 					.player
-						input(type='text', class='span4', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent')
+						input(type='text', class='span5', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent')
 				.set
 					.games
 						input(type='text', maxlength=2)
@@ -38,6 +38,12 @@ block content
 						input(type='text', maxlength=2)
 					.games
 						input(type='text', maxlength=2)
+				.subtle on
+				.gameday
+					.control-group.input-append
+						input(type='text', ng-model='datepicker.date', data-date-format='dd/mm/yyyy', bs-datepicker)
+						button(type='button', class='btn', data-toggle='datepicker')
+							i.icon-calendar
 				.buttons
 					button(type='button', class='btn btn-success btn-block') Submit Score
 
