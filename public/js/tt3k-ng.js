@@ -145,6 +145,7 @@ var tt3k = (function() {
 		$scope.signUp = function() {
 			$http.put('/member', $scope.member)
 				.success(function() {
+					refreshMenu();
 					$location.path('/scores');
 				})
 				.error(function(data, status) {

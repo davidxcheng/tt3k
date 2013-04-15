@@ -16,7 +16,6 @@ module.exports = {
 
 			server.post('/logout', function(req, res) {
 				req.session.destroy(function(err) {
-					console.log('Member logged out');
 					res.send(200, 'OK')
 				});
 			});
