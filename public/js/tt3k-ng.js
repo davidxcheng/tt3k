@@ -57,19 +57,22 @@ var tt3k = (function() {
 		};
 	};
 
-	var scoresCtrl = function($scope, $http) {
+	var scoresCtrl = function($scope, $http, $location) {
 		$scope.match = {
-			player1: {
-				name: ''
-			}
+			player1: { }
 		};
 
 		$http.get('/member/current')
-			.success(function(data, status) {
-				if (data.name)
-					$scope.match.player1.name = data.name;
+			.success(function(user, status) {
+				if (user) {
+					$scope.match.player1.name = user.name;
+					$http.get('/players')
+						.success(function(data, status) {
+							$scope.opponents = data;
+						});
+				}
 				else
-					$scope.feedback = "You have to login in before you can submit a score."
+					$location.path('/login');
 			});
 	};
 

@@ -61,7 +61,6 @@ module.exports = function() {
 				error.message = 'Member did not pass validation.';
 			}
 
-
 			if (cb && typeof cb == 'function')
 				cb(error);
 		},
@@ -82,6 +81,14 @@ module.exports = function() {
 					});
 				});
 			}
+		},
+		GetOpponents: function(player, cb) {
+			mongoClient.connect(dbConfig.connectionString, function(err, db) {
+				db.collection(dbConfig.collections.Members).find({ email: { $ne: player.email } }).toArray(function(err, docs) {
+					var players = docs.map(function(p) { return p.name; });
+					cb(players);
+				});
+			});
 		}
 	};
 }

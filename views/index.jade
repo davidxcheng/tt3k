@@ -7,7 +7,40 @@ block content
 
 	script(id='ScoresView', type='text/ng-template')
 		#scores
-			#match {{ match.player1.name }}
+			#match
+				#players
+					.player {{ match.player1.name }}
+					.vs vs
+					.player
+						input(type='text', class='span4', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent')
+				.set
+					.games
+						input(type='text', maxlength=2)
+					.games
+						input(type='text', maxlength=2)
+				.set
+					.games
+						input(type='text', maxlength=2)
+					.games
+						input(type='text', maxlength=2)
+				.set
+					.games
+						input(type='text', maxlength=2)
+					.games
+						input(type='text', maxlength=2)
+				.set
+					.games
+						input(type='text', maxlength=2)
+					.games
+						input(type='text', maxlength=2)
+				.set
+					.games
+						input(type='text', maxlength=2)
+					.games
+						input(type='text', maxlength=2)
+				.buttons
+					button(type='button', class='btn btn-success btn-block') Submit Score
+
 		#feedback.hide.alert.alert-warning
 			{{ feedback }}
 

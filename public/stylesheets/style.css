@@ -67,3 +67,50 @@ h3 {
   margin: 40px auto 0 auto;
   padding-left: 110px;
 }
+#match {
+  text-align: center;
+  position: relative;
+}
+#players {
+  display: inline-block;
+  margin-right: 40px;
+  margin-top: 10px;
+}
+.player input[type=text] {
+  height: auto;
+  border: none;
+  font: normal 50px "Georgia";
+  transition: none;
+  box-shadow: none;
+  color: #000;
+}
+.set {
+  position: relative;
+  display: inline-block;
+  top: -2px;
+  margin-right: 8px;
+}
+.games {
+  margin-bottom: 10px;
+}
+.games input[type=text] {
+  border: none;
+  font: normal 50px "Georgia";
+  color: #000;
+  background: #fff;
+  width: 50px;
+  text-align: center;
+  height: auto;
+  transition: none;
+}
+#match input[type=text]:focus {
+  outline: none;
+}
+.player {
+  font: normal 50px "Georgia";
+  text-align: left;
+}
+.vs {
+  color: #999;
+  font: italic 20px "Georgia";
+}

@@ -1,6 +1,5 @@
 module.exports = {
 	setup: function(server, mongoClient) {
-
 			var m = require('../handlers/members')(mongoClient);
 
 			server.get('/signup', function(req, res) {
@@ -19,7 +18,10 @@ module.exports = {
 				m.HandleCreateMember(member, function(err) {
 					if (!err) {
 						// Logon the new member
-						req.session.user = member.name;
+						req.session.user = {
+							name: member.name,
+							email: member.email
+						};
 						res.send(201, 'Created');
 					}
 					else {
@@ -34,7 +36,10 @@ module.exports = {
 
 				m.HandleLogin(credentials, function(success, member) {
 					if (success) {
-						req.session.user = member.name;
+						req.session.user = {
+							name: member.name,
+							email: member.email
+						};
 						res.send(member.name);
 					}
 					else {
@@ -44,8 +49,13 @@ module.exports = {
 			});
 
 			server.get('/member/current', function(req, res) {
-				console.log(req.session.user);
-				res.send({ name: req.session.user });
+				res.send(req.session.user);
+			});
+
+			server.get('/players', function(req, res) {
+				m.GetOpponents(req.session.user, function(players) {
+					res.send(players);
+				});
 			});
 		}
 }
