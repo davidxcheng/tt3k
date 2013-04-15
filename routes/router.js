@@ -1,7 +1,14 @@
 module.exports = {
 	setup: function(server) {
-			var m = require('../handlers/members'),
+			var memberHandler = require('../handlers/members'),
 				scoreHandler = require('../handlers/scores');
+
+			server.get('/menu', function(req, res) {
+				if (req.session.user)
+					res.render('menuForLoggedIn');
+				else
+					res.render('menuForUnknown');
+			});
 
 			server.get('/signup', function(req, res) {
 				res.render('signup');
@@ -9,14 +16,15 @@ module.exports = {
 
 			server.post('/logout', function(req, res) {
 				req.session.destroy(function(err) {
-					// nothing to do here
+					console.log('Member logged out');
+					res.send(200, 'OK')
 				});
 			});
 
 			server.put('/member', function(req, res) {
 				var member = req.body;
 
-				m.HandleCreateMember(member, function(err) {
+				memberHandler.HandleCreateMember(member, function(err) {
 					if (!err) {
 						// Logon the new member
 						req.session.user = {
@@ -35,7 +43,7 @@ module.exports = {
 			server.post('/login', function(req, res) {
 				var credentials = req.body;
 
-				m.HandleLogin(credentials, function(success, member) {
+				memberHandler.HandleLogin(credentials, function(success, member) {
 					if (success) {
 						req.session.user = {
 							name: member.name,
@@ -71,7 +79,7 @@ module.exports = {
 			});
 
 			server.get('/players', function(req, res) {
-				m.GetOpponents(req.session.user, function(players) {
+				memberHandler.GetOpponents(req.session.user, function(players) {
 					res.send(players);
 				});
 			});

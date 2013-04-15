@@ -13,8 +13,5 @@ html(data-ng-app='tt3k')
 	body(data-ng-controller='tt3k.MainCtrl')
 		#brand Trash&nbsp;Talk&nbsp;3000
 		#main-menu
-			ul
-				li(data-ng-repeat='item in menu')
-					a(href='{{ item.href }}') {{ item.text }}
 		#main-wrapper.ng-view
 		block content

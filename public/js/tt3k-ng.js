@@ -15,6 +15,11 @@ angular.module('tt3k', [], function($routeProvider, $locationProvider) {
 			controller: 	'tt3k.MemberCtrl'
 		})
 
+		.when('/logout', {
+			templateUrl: 	'ByeView',
+			controller: 	'tt3k.LogoutCtrl'
+		})
+
 		.when('/', {
 			templateUrl: 	"LatestScoresView",
 			controller: 	"tt3k.LatestScoresCtrl" 
@@ -24,6 +29,12 @@ angular.module('tt3k', [], function($routeProvider, $locationProvider) {
 });
 
 var tt3k = (function() {
+	var refreshMenu = function() {
+		$.get('/menu', function(menuItems) {
+			$('#main-menu').html(menuItems);
+		});
+	};
+
 	/***
 	* AngularJs controllers
 	***/
@@ -36,32 +47,24 @@ var tt3k = (function() {
 			});
 	};
 
-	var mainCtrl = function($scope, $route, $routeParams, $location) {
+	var mainCtrl = function($scope, $route, $routeParams, $location, $http) {
 		$scope.$route = $route;
 		$scope.$location = $location;
 		$scope.$routeParams = $routeParams;
 
-		var menu = [
-			{ href: '/', text: "What's Up"},
-			{ href: '/scores', text: 'Keeping The Score' },
-			{ href: '/login', text: 'Login' },
-			{ href: '/sign-up', text: 'Sign Up'}
-		];
+		refreshMenu();
 
-		var menu2 = [
-			{ href: '/', text: "What's Up"},
-			{ href: '/scores', text: 'Keeping The Score' },
-			{ href: '/logout', text: 'Log Out' }
-		];
+/*
+		$http.get('/menu')
+			.success(function(menuItems, status) {
+				$('#main-menu').html(menuItems);
+			}); */
+	};
 
-		$scope.menu = menu;
-
-		$scope.logout = function() {
-			http.post('/logout', {})
-				.success(function() {
-					$scope.menu = menu;
-				});
-		};
+	var logoutCtrl = function($http) {
+		$http.post('/logout', {}).success(function(){
+			refreshMenu();
+		});
 	};
 
 	var scoresCtrl = function($scope, $http, $location) {
@@ -114,10 +117,9 @@ var tt3k = (function() {
 				]
 			};
 
-			console.log(JSON.stringify(match));
 			$http.post('/scores', match)
 				.success(function() {
-
+					$location.path('/');
 				});
 			$('#btnSubmitScore').attr('disabled', 'disabled')
 		};
@@ -129,6 +131,7 @@ var tt3k = (function() {
 		$scope.login = function() {
 			$http.post('/login', $scope.credentials)
 				.success(function(name) {
+					refreshMenu();
 					$location.path('/scores');
 				})
 				.error(function(data, status) {
@@ -155,6 +158,7 @@ var tt3k = (function() {
 		LatestScoresCtrl: latestScoresCtrl,
 		ScoresCtrl: scoresCtrl,
 		MainCtrl: mainCtrl,
-		MemberCtrl: memberCtrl
+		MemberCtrl: memberCtrl,
+		LogoutCtrl: logoutCtrl
 	};
 })();
