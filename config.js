@@ -3,7 +3,8 @@ module.exports = {
 	mongoDb: {
 		connectionString: 'mongodb://localhost:27017/tt3k',
 		collections: {
-			Members: 'Members'
+			Members: 'Members',
+			Scores: 'Scores'
 		}
 	}
 };

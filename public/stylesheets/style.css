@@ -67,6 +67,9 @@ h3 {
   margin: 40px auto 0 auto;
   padding-left: 110px;
 }
+#main-wrapper > #start {
+  margin-top: 20px;
+}
 #match {
   text-align: center;
   position: relative;
@@ -109,6 +112,9 @@ h3 {
 .player {
   font: normal 50px "Georgia";
   text-align: left;
+}
+#player2 {
+  margin-left: -6px;
 }
 .vs,
 .subtle {

@@ -1,6 +1,7 @@
 module.exports = {
-	setup: function(server, mongoClient) {
-			var m = require('../handlers/members')(mongoClient);
+	setup: function(server) {
+			var m = require('../handlers/members'),
+				scoreHandler = require('../handlers/scores');
 
 			server.get('/signup', function(req, res) {
 				res.render('signup');
@@ -45,6 +46,23 @@ module.exports = {
 					else {
 						res.send(400, 'Login failed:(');
 					}
+				});
+			});
+
+			server.get('/scores/latest', function(req, res) {
+				scoreHandler.GetLatestScores(10, function(scores) {
+					res.send(scores);
+				});
+			});
+
+			server.post('/scores', function(req, res) {
+				var match = req.body;
+				scoreHandler.HandleSubmitScore(match, function(err) {
+					if (!err) {
+						console.log(err);
+					}
+					
+					res.send(200, 'OK');
 				});
 			});
 

@@ -1,4 +1,4 @@
-module.exports = function() {
+module.exports = (function() {
 
 	var mongoClient = require('mongodb').MongoClient,
 		dbConfig 	= require('../config').mongoDb,
@@ -91,4 +91,4 @@ module.exports = function() {
 			});
 		}
 	};
-}
+})();

@@ -16,8 +16,8 @@ angular.module('tt3k', [], function($routeProvider, $locationProvider) {
 		})
 
 		.when('/', {
-			templateUrl: 	"SignUpView",
-			controller: 	"tt3k.MemberCtrl" 
+			templateUrl: 	"LatestScoresView",
+			controller: 	"tt3k.LatestScoresCtrl" 
 		});
 
 	$locationProvider.html5Mode(true);
@@ -27,6 +27,15 @@ var tt3k = (function() {
 	/***
 	* AngularJs controllers
 	***/
+	var latestScoresCtrl = function($scope, $http) {
+		$scope.scores = [];
+
+		$http.get('/scores/latest')
+			.success(function(scores) {
+				$scope.scores = scores;
+			});
+	};
+
 	var mainCtrl = function($scope, $route, $routeParams, $location) {
 		$scope.$route = $route;
 		$scope.$location = $location;
@@ -108,6 +117,11 @@ var tt3k = (function() {
 			};
 
 			console.log(JSON.stringify(match));
+			$http.post('/scores', match)
+				.success(function() {
+
+				});
+			$('#btnSubmitScore').attr('disabled', 'disabled')
 		};
 	};
 
@@ -140,6 +154,7 @@ var tt3k = (function() {
 	};
 
 	return {
+		LatestScoresCtrl: latestScoresCtrl,
 		ScoresCtrl: scoresCtrl,
 		MainCtrl: mainCtrl,
 		MemberCtrl: memberCtrl
