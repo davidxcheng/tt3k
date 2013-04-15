@@ -9,43 +9,43 @@ block content
 		#scores
 			#match
 				#players
-					.player {{ match.player1.name }}
+					.player {{ player1 }}
 					.vs vs
 					.player
-						input(type='text', class='span5', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent')
+						input(type='text', id='player2', class='span5', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1)
 				.set
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=2, id='set1-player1')
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=3, id='set1-player2')
 				.set
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=4, id='set2-player1')
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=5, id='set2-player2')
 				.set
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=6, id='set3-player1')
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=7, id='set3-player2')
 				.set
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=8, id='set4-player1')
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=9, id='set4-player2')
 				.set
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=10, id='set5-player1')
 					.games
-						input(type='text', maxlength=2)
+						input(type='text', maxlength=2, tabindex=11, id='set5-player2')
 				.subtle on
 				.gameday
 					.control-group.input-append
-						input(type='text', ng-model='datepicker.date', data-date-format='dd/mm/yyyy', bs-datepicker)
+						input(type='text', id='hell', data-ng-model='match.date', data-date-format='dd/mm/yyyy', data-toggle='datepicker')
 						button(type='button', class='btn', data-toggle='datepicker')
 							i.icon-calendar
 				.buttons
-					button(type='button', class='btn btn-success btn-block') Submit Score
+					button(type='button', class='btn btn-success btn-block', ng-click='submitScore()') Submit Score
 
 		#feedback.hide.alert.alert-warning
 			{{ feedback }}
