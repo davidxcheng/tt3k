@@ -3,14 +3,22 @@ module.exports = {
 
 			var m = require('../handlers/members')(mongoClient);
 
-			server.get('/signup', function(req, res) {
+			server.get('/sign-up', function(req, res) {
 				res.render('signup');
+			});
+
+			server.get('/login', function(req, res) {
+				res.render('login');
 			});
 
 			server.post('/logout', function(req, res) {
 				req.session.destroy(function(err) {
 					// nothing to do here
 				});
+			});
+
+			server.get('/scores', function(req, res) {
+				res.render('scores');
 			});
 
 			server.put('/member', function(req, res) {
@@ -20,7 +28,7 @@ module.exports = {
 					if (!err) {
 						// Logon the new member
 						req.session.user = member.name;
-						res.send(201, 'Creted');
+						res.render('welcome', { name: member.name });
 					}
 					else {
 						console.log('Failed to create member. ' + JSON.stringify(err));
@@ -35,7 +43,7 @@ module.exports = {
 				m.HandleLogin(credentials, function(success, member) {
 					if (success) {
 						req.session.user = member.name;
-						res.send(member.name);
+						res.render('welcome', { name: member.name });
 					}
 					else {
 						res.send(400, 'Login failed:(');

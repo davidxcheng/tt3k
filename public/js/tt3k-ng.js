@@ -1,59 +1,19 @@
-angular.module('tt3k', [], function($routeProvider, $locationProvider) {
-	$routeProvider
-		.when('/scores', {
-			templateUrl: 	'ScoresView',
-			controller: 	'tt3k.ScoresCtrl'
-		})
+angular.module('tt3k', []);
 
-		.when('/login', {
-			templateUrl: 	'LoginView',
-			controller: 	'tt3k.MemberCtrl'
-		})
-
-		.when('/sign-up', {
-			templateUrl: 	'SignUpView',
-			controller: 	'tt3k.MemberCtrl'
-		})
-
-		.when('/', {
-			templateUrl: 	"SignUpView",
-			controller: 	"tt3k.MemberCtrl" 
-		});
-
-	$locationProvider.html5Mode(true);
-})
-.service('menuService', function() {
-	var setActiveMenuItem = function($menuItem) {
-		$('#main-menu .active').removeClass('active');
-		$menuItem.addClass('active');
-	};
-
-	var setMenuBasedOnContext = function(isLoggedIn) {
-		//if (isLoggedIn)
-
-	};
-
+var tt3k = (function() {
 	$(document).ready(function() {
-		$('#main-menu a').on('click', function(e) {
+		$('#main-menu a[href$=logout]').on('click', function(e) {
 			e.preventDefault();
-			setActiveMenuItem($(this));
+			$.post('/logout', { }, function(data) {
+				$('#main-wrapper').html(data);
+			});
 		});
 	});
 
-	return {
-		setActiveMenuItem: setActiveMenuItem
-	};
-});
-
-var tt3k = (function() {
 	/***
 	* AngularJs controllers
 	***/
-	var mainCtrl = function($scope, $route, $routeParams, $location) {
-		$scope.$route = $route;
-		$scope.$location = $location;
-		$scope.$routeParams = $routeParams;
-
+	var menuCtrl = function($scope, $http) {
 		var menu = [
 			{ href: '/', text: "What's Up"},
 			{ href: '/challenge', text: "Game On"},
@@ -62,14 +22,18 @@ var tt3k = (function() {
 			{ href: '/sign-up', text: 'Sign Up'}
 		];
 
-		var menu2 = [
+		var menuLoggedIn = [
 			{ href: '/', text: "What's Up"},
 			{ href: '/challenge', text: "Game On"},
 			{ href: '/scores', text: 'Keeping The Score' },
 			{ href: '/logout', text: 'Log Out' }
 		];
 
-		$scope.menu = menu;
+		$http.get('/member/current')
+			.success(function(data, status) {
+				$scope.menu = (data.name) ? menuLoggedIn : menu;
+			});
+		
 
 		$scope.logout = function() {
 			http.post('/logout', {})
@@ -81,9 +45,7 @@ var tt3k = (function() {
 
 	var scoresCtrl = function($scope, $http) {
 		$scope.match = {
-			player1: {
-				name: ''
-			}
+			player1: { }
 		};
 
 		$http.get('/member/current')
@@ -97,11 +59,10 @@ var tt3k = (function() {
 
 	var memberCtrl = function($scope, $http, $location) {
 		$scope.credentials = {};
-
 		$scope.login = function() {
 			$http.post('/login', $scope.credentials)
-				.success(function(name) {
-					$location.path('/scores');
+				.success(function(data, status) {
+					$('#main-wrapper').html(data);
 				})
 				.error(function(data, status) {
 					$scope.feedback = data || 'Something went wrong!';
@@ -113,8 +74,8 @@ var tt3k = (function() {
 
 		$scope.signUp = function() {
 			$http.put('/member', $scope.member)
-				.success(function() {
-					$location.path('/login');
+				.success(function(data, status) {
+					$('#main-wrapper').html(data);
 				})
 				.error(function(data, status) {
 					$scope.feedback = data || 'Something went wrong!';
@@ -125,7 +86,7 @@ var tt3k = (function() {
 
 	return {
 		ScoresCtrl: scoresCtrl,
-		MainCtrl: mainCtrl,
+		MenuCtrl: menuCtrl,
 		MemberCtrl: memberCtrl
 	};
 })();

@@ -1,0 +1,17 @@
+extends layout
+
+block content
+	div(data-ng-controller='tt3k.MemberCtrl', id='login')
+		form.form-horizontal
+			.control-group
+				.controls
+					input(type='text', data-ng-model='credentials.username', placeholder='Email', autofocus)
+			.control-group
+				.controls
+					input(type='password', data-ng-model='credentials.password', placeholder='Password')
+			.control-group
+				.controls
+					button(type='button', data-ng-click='login()', class='btn btn-success') Login
+			#feedback.hide.alert.alert-error
+				b Oh no! 
+				{{ feedback }}

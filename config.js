@@ -1,7 +1,7 @@
 module.exports = {
 	port: 3000,
 	mongoDb: {
-		connectionString: 'mongodb://localhost:27017/tt3k',
+		connectionString: 'mongodb://localhost:27017/tt3k?w=1',
 		collections: {
 			Members: 'Members'
 		}

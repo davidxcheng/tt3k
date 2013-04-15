@@ -8,7 +8,9 @@ module.exports = function() {
 	// Make sure no duplicate members can be inserted
 	mongoClient.connect(dbConfig.connectionString, function(err, db) {
 		db.collection(dbConfig.collections.Members, function(err, collection) {
-			collection.ensureIndex({ 'email': 1 }, { unique: true, w: 0, background: true });
+			collection.ensureIndex({ 'email': 1 }, { unique: true, background: true }, function(err, nameOfIndex) {
+				//console.log(nameOfIndex);
+			});
 		});
 	});		
 

@@ -1,11 +1,13 @@
 extends layout
 
 block content
-	div(data-ng-controller='tt3k.MemberCtrl', id='signup')
+	div(data-ng-controller='tt3k.ScoresCtrl', id='scores')
 		form.form-horizontal
 			.control-group
 				.controls
-					input(type='text', data-ng-model='member.name', placeholder='FirstName LastName', maxlength=80, required, autofocus)
+					input(type='text', data-ng-model='match.set[0].player1.games', placeholder='6', maxlength=2, autofocus).span1
+				.controls
+					input(type='text', data-ng-model='match.set[1].player1.games', placeholder='6', maxlength=2).span1
 			.control-group
 				.controls
 					input(type='text', data-ng-model='member.email', placeholder='Email', pattern='.+@.+\.[a-z]{2,3}', maxlength=80, required)
@@ -14,7 +16,7 @@ block content
 					input(type='password', data-ng-model='member.password', placeholder='Password', pattern='.{6,}', maxlength=80, required)
 			.control-group
 				.controls
-					button(type='button', data-ng-click='signUp()', class='btn btn-success') Sign Up
+					button(type='button', data-ng-click='submit()', class='btn btn-success') Submit
 			#feedback.hide.alert.alert-error
 				b Oh snap! 
 				{{ feedback }}

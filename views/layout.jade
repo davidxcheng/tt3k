@@ -1,18 +1,17 @@
 doctype 5
 html(data-ng-app='tt3k')
 	head
-		title= title
+		title Trash Talk 3000
 		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
 		script(src='https://ajax.googleapis.com/ajax/libs/angularjs/1.0.6/angular.min.js')
-		//script(src='/js/tt3k.js')
 		script(src='/js/tt3k-ng.js')
-	body(data-ng-controller='tt3k.MainCtrl')
+	body
 		#brand Trash&nbsp;Talk&nbsp;3000
-		#main-menu
+		#main-menu(data-ng-controller='tt3k.MenuCtrl')
 			ul
 				li(data-ng-repeat='item in menu')
 					a(href='{{ item.href }}') {{ item.text }}
-		#main-wrapper.ng-view
-		block content
+		#main-wrapper
+			block content
