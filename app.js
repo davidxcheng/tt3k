@@ -1,10 +1,5 @@
-/**
- * Module dependencies.
- */
-
 var express = require('express'),
 	routes = require('./routes'),
-	user = require('./routes/user'),
 	http = require('http'),
 	path = require('path'),
 	config = require('./config');
@@ -44,7 +39,6 @@ if ('development' == app.get('env')) {
 require('./routes/router').setup(app);
 
 app.get('/', routes.index);
-app.get('/users', user.list);
 
 http.createServer(app).listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));

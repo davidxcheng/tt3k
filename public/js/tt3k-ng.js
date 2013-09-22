@@ -53,12 +53,6 @@ var tt3k = (function() {
 		$scope.$routeParams = $routeParams;
 
 		refreshMenu();
-
-/*
-		$http.get('/menu')
-			.success(function(menuItems, status) {
-				$('#main-menu').html(menuItems);
-			}); */
 	};
 
 	var logoutCtrl = function($http) {
