@@ -1,34 +1,34 @@
-angular.module('tt3k', [], function($routeProvider, $locationProvider) {
+angular.module('tt3kng', [], function($routeProvider, $locationProvider) {
 	$routeProvider
 		.when('/scores', {
 			templateUrl: 	'ScoresView',
-			controller: 	'tt3k.ScoresCtrl'
+			controller: 	'tt3kng.ScoresCtrl'
 		})
 
 		.when('/login', {
 			templateUrl: 	'LoginView',
-			controller: 	'tt3k.MemberCtrl'
+			controller: 	'tt3kng.MemberCtrl'
 		})
 
 		.when('/sign-up', {
 			templateUrl: 	'SignUpView',
-			controller: 	'tt3k.MemberCtrl'
+			controller: 	'tt3kng.MemberCtrl'
 		})
 
 		.when('/logout', {
 			templateUrl: 	'ByeView',
-			controller: 	'tt3k.LogoutCtrl'
+			controller: 	'tt3kng.LogoutCtrl'
 		})
 
 		.when('/', {
 			templateUrl: 	"LatestScoresView",
-			controller: 	"tt3k.LatestScoresCtrl" 
+			controller: 	"tt3kng.LatestScoresCtrl" 
 		});
 
 	$locationProvider.html5Mode(true);
 });
 
-var tt3k = (function() {
+var tt3kng = (function() {
 	var refreshMenu = function() {
 		$.get('/menu', function(menuItems) {
 			$('#main-menu').html(menuItems);
@@ -62,7 +62,7 @@ var tt3k = (function() {
 	};
 
 	var scoresCtrl = function($scope, $http, $location) {
-		$('#hell').datepicker({ format: 'yyyy-mm-dd' });
+		$('#when').datepicker({ format: 'yyyy-mm-dd' });
 
 		$http.get('/member/current')
 			.success(function(user, status) {
