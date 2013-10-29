@@ -1,7 +1,18 @@
+define([
+	'angularjs.1.0.6.min',
+	'tt3k.routes'
+	],
+	function(ng) {
+		return ng.module('tt3k', [
+				'controllers'
+			]);
+	});
+
+/*
 define(['jQuery.1.9.1.min'], function($){
 
 	var setup = function () {
-		
+
 		// mark chosen menu item as active
 		var setActiveMenuItem = function($menuItem) {
 			$('#main-menu .active').removeClass('active');
@@ -26,4 +37,4 @@ define(['jQuery.1.9.1.min'], function($){
 	return {
 		setup: setup
 	};
-});
+});*/

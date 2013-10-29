@@ -1,33 +1,20 @@
-angular.module('tt3kng', [], function($routeProvider, $locationProvider) {
-	$routeProvider
-		.when('/scores', {
-			templateUrl: 	'ScoresView',
-			controller: 	'tt3kng.ScoresCtrl'
-		})
-
-		.when('/login', {
-			templateUrl: 	'LoginView',
-			controller: 	'tt3kng.MemberCtrl'
-		})
-
-		.when('/sign-up', {
-			templateUrl: 	'SignUpView',
-			controller: 	'tt3kng.MemberCtrl'
-		})
-
-		.when('/logout', {
-			templateUrl: 	'ByeView',
-			controller: 	'tt3kng.LogoutCtrl'
-		})
-
-		.when('/', {
-			templateUrl: 	"LatestScoresView",
-			controller: 	"tt3kng.LatestScoresCtrl" 
-		});
-
-	$locationProvider.html5Mode(true);
+define([
+		'angularjs.1.0.6.min',
+		'MainCtrl'
+	],
+	function(
+		ng,
+		mainCtrl) {
+		return ng.module('controllers', [])
+			.controller('MainxCtrl', [function($scope) {
+				window.console.log('we got bush!');
+			}])
+			.controller('MainCtrl', [function() {
+				window.console.log('catch you on the flipside!');
+			}]);
 });
 
+/*
 var tt3kng = (function() {
 	var refreshMenu = function() {
 		$.get('/menu', function(menuItems) {
@@ -35,9 +22,6 @@ var tt3kng = (function() {
 		});
 	};
 
-	/***
-	* AngularJs controllers
-	***/
 	var latestScoresCtrl = function($scope, $http) {
 		$scope.scores = [];
 
@@ -133,7 +117,7 @@ var tt3kng = (function() {
 					$('#feedback').removeClass('hide');
 				});
 		};
-		
+
 		$scope.member = {};
 
 		$scope.signUp = function() {
@@ -156,4 +140,4 @@ var tt3kng = (function() {
 		MemberCtrl: memberCtrl,
 		LogoutCtrl: logoutCtrl
 	};
-})();
+})(); */

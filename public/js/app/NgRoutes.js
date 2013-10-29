@@ -1,0 +1,35 @@
+define([
+	'libs/angularjs.1.0.6.min'
+	'MainCtrl'
+	],
+	function(ng) {
+		return ng.module('routes', ['$routeProvider', '$locationProvider'], function($routeProvider, $locationProvider) {
+			$routeProvider
+				.when('/scores', {
+					templateUrl: 	'ScoresView',
+					controller: 	'controllers.ScoresCtrl'
+				})
+
+				.when('/login', {
+					templateUrl: 	'LoginView',
+					controller: 	'controllers.MemberCtrl'
+				})
+
+				.when('/sign-up', {
+					templateUrl: 	'SignUpView',
+					controller: 	'controllers.MemberCtrl'
+				})
+
+				.when('/logout', {
+					templateUrl: 	'ByeView',
+					controller: 	'controllers.LogoutCtrl'
+				})
+
+				.when('/', {
+					templateUrl: 	"LatestScoresView",
+					controller: 	"controllers.LatestScoresCtrl"
+				});
+
+			$locationProvider.html5Mode(true);
+		});
+	});

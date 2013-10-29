@@ -1,12 +1,12 @@
 doctype 5
-html(data-ng-app='tt3kng')
+html
 	head
 		title= title
 		link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
 		link(rel='stylesheet', href='/stylesheets/style.css')
 		link(rel='stylesheet', href='/stylesheets/libs/bootstrap-datepicker.css')
-		script(data-main='js/rjs-config', src='/js/libs/require.js')
-	body(data-ng-controller='tt3kng.MainCtrl')
+		script(data-main='js/main', src='/js/libs/require.js')
+	body(data-ng-controller='MainCtrl')
 		#brand Trash&nbsp;Talk&nbsp;3000
 		#main-menu
 		#main-wrapper.ng-view
