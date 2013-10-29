@@ -1,9 +1,9 @@
 define([
 	'libs/angularjs.1.0.6.min'
-	'MainCtrl'
 	],
 	function(ng) {
 		return ng.module('routes', ['$routeProvider', '$locationProvider'], function($routeProvider, $locationProvider) {
+
 			$routeProvider
 				.when('/scores', {
 					templateUrl: 	'ScoresView',
