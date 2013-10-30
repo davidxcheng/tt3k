@@ -2,34 +2,34 @@ define([
 	'libs/angularjs.1.0.6.min'
 	],
 	function(ng) {
-		return ng.module('routes', ['$routeProvider', '$locationProvider'], function($routeProvider, $locationProvider) {
+		return function($routeProvider, $locationProvider) {
 
 			$routeProvider
 				.when('/scores', {
 					templateUrl: 	'ScoresView',
-					controller: 	'controllers.ScoresCtrl'
+					controller: 	'ScoresCtrl'
 				})
 
 				.when('/login', {
 					templateUrl: 	'LoginView',
-					controller: 	'controllers.MemberCtrl'
+					controller: 	'MemberCtrl'
 				})
 
 				.when('/sign-up', {
 					templateUrl: 	'SignUpView',
-					controller: 	'controllers.MemberCtrl'
+					controller: 	'MemberCtrl'
 				})
 
 				.when('/logout', {
 					templateUrl: 	'ByeView',
-					controller: 	'controllers.LogoutCtrl'
+					controller: 	'LogoutCtrl'
 				})
 
 				.when('/', {
 					templateUrl: 	"LatestScoresView",
-					controller: 	"controllers.LatestScoresCtrl"
+					controller: 	"LatestScoresCtrl"
 				});
 
 			$locationProvider.html5Mode(true);
-		});
+		};
 	});

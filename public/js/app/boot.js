@@ -7,17 +7,20 @@ define([
 		'LogoutCtrl',
 		'NgRoutes'
 	],
+
 	function(ng,
 			 mainCtrl,
 			 latestScoresCtrl,
 			 memberCtrl,
 			 scoresCtrl,
-			 logoutCtrl) {
+			 logoutCtrl,
+			 router) {
 
-		 ng.module('tt3k', [])
+		return ng.module('tt3k', [])
 			.controller('MainCtrl', mainCtrl)
 			.controller('LatestScoresCtrl', latestScoresCtrl)
 			.controller('MemberCtrl', memberCtrl)
 			.controller('ScoresCtrl', scoresCtrl)
-			.controller('LogoutCtrl', logoutCtrl);
+			.controller('LogoutCtrl', logoutCtrl)
+			.config(['$routeProvider', '$locationProvider', router]);
 	});

@@ -28,7 +28,7 @@ require.config({
 	]
 });
 
-require(['libs/angularjs.1.0.6.min', 'tt3k'], function(ng) {
+require(['libs/angularjs.1.0.6.min', 'boot'], function(ng) {
 
 	ng.element(document).ready(function() {
 		ng.bootstrap(document, ['tt3k']);
