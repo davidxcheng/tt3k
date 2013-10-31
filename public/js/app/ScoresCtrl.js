@@ -1,4 +1,4 @@
-define(['libs/angularjs.1.0.6.min'], function(ng) {
+define(['libs/angularjs.1.0.6.min', 'libs/bootstrap-datepicker'], function(ng) {
 
 	return function($scope, $http, $location) {
 		$('#when').datepicker({ format: 'yyyy-mm-dd' });
