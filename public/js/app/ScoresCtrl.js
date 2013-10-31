@@ -18,7 +18,7 @@ define(['libs/angularjs.1.0.6.min', 'libs/bootstrap-datepicker'], function(ng) {
 
 		$scope.submitScore = function() {
 			var match = {
-				gameday: $('#hell').val(),
+				gameday: $('#when').val(),
 				player1: $('.player').html(),
 				player2: $('#player2').val(),
 				sets: [
