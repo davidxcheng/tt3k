@@ -1,5 +1,4 @@
 define(['libs/angularjs.1.0.6.min', 'libs/jQuery.1.9.1.min'], function(ng, $) {
-	console.log('bb');
 
 	var refreshMenu = function() {
 		$.get('/menu', function(menuItems) {
@@ -7,10 +6,12 @@ define(['libs/angularjs.1.0.6.min', 'libs/jQuery.1.9.1.min'], function(ng, $) {
 		});
 	};
 
-	$('#main-menu a').on('click', function(e) {
-		$('#main-menu .active').removeClass('active');
-		console.log("fdfsdf");
-		$(this).addClass('active');
+	$(document).ready(function() {
+			console.log("fdfsdf");
+		$('#main-menu').on('click', 'a', function(e) {
+			$('#main-menu .active').removeClass('active');
+			$(this).addClass('active');
+		});
 	});
 
 	return function($scope, $route, $routeParams, $location, $http) {
