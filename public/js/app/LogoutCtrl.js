@@ -6,9 +6,10 @@ define(['libs/angularjs.1.0.6.min'], function(ng) {
 		});
 	};
 
-	return function($http) {
-		$http.post('/logout', {}).success(function(){
+	return function($http, $location) {
+		$http.post('/logout', {}).success(function() {
 			refreshMenu();
+			$location.path('/');
 		});
 	};
 

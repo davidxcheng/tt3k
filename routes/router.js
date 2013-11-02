@@ -68,7 +68,7 @@ module.exports = {
 					if (!err) {
 						console.log(err);
 					}
-					
+
 					res.send(200, 'OK');
 				});
 			});

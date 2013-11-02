@@ -21,7 +21,7 @@ define([
 				})
 
 				.when('/logout', {
-					templateUrl: 	'ByeView',
+					templateUrl: 	'LatestScoresView',
 					controller: 	'LogoutCtrl'
 				})
 
