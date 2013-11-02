@@ -7,7 +7,6 @@ define(['libs/angularjs.1.0.6.min', 'libs/jQuery.1.9.1.min'], function(ng, $) {
 	};
 
 	$(document).ready(function() {
-			console.log("fdfsdf");
 		$('#main-menu').on('click', 'a', function(e) {
 			$('#main-menu .active').removeClass('active');
 			$(this).addClass('active');
