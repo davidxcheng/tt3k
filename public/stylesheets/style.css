@@ -132,6 +132,9 @@ h3 {
 .faded {
   color: #999;
 }
+.date {
+  font-style: normal;
+}
 .buttons {
   margin-top: 30px;
 }
