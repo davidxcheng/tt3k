@@ -2,7 +2,9 @@ var express = require('express'),
 	routes = require('./routes'),
 	http = require('http'),
 	path = require('path'),
-	config = require('./config');
+	config = process.env.NODE_ENV === 'production'
+		? require('./prod.config')
+		: require('./config');
 
 var app = express();
 
@@ -21,10 +23,10 @@ app.use(app.router);
 // setup stylus with custom compile
 var stylus = require('stylus');
 function compile(str, path) {
-	return stylus(str).define('url', stylus.url({ limit: 1000000 }));	
+	return stylus(str).define('url', stylus.url({ limit: 1000000 }));
 }
 
-app.use(stylus.middleware({ 
+app.use(stylus.middleware({
 	src: 		__dirname + '/public',
 	compile: 	compile
 }));
