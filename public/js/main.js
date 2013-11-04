@@ -8,17 +8,17 @@ require.config({
     },
 
 	shim: {
-		'libs/jQuery.1.9.1.min': {
+		'libs/jquery.1.9.1.min': {
 			exports: 'jQuery'
 		},
 		'libs/bootstrap-datepicker': {
-			deps: ['libs/jQuery.1.9.1.min']
+			deps: ['libs/jquery.1.9.1.min']
 		},
 		'libs/bootstrap.min': {
-			deps: ['libs/jQuery.1.9.1.min']
+			deps: ['libs/jquery.1.9.1.min']
 		},
 		'libs/angularjs.1.0.6.min': {
-			deps: ['libs/jQuery.1.9.1.min'],
+			deps: ['libs/jquery.1.9.1.min'],
 			exports: 'angular'
 		}
 	},
