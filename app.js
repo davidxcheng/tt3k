@@ -2,9 +2,7 @@ var express = require('express'),
 	routes = require('./routes'),
 	http = require('http'),
 	path = require('path'),
-	config = process.env.NODE_ENV === 'production'
-		? require('./prod.config')
-		: require('./config');
+	config = require('./config');
 
 var app = express();
 

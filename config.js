@@ -1,10 +1,8 @@
-module.exports = {
-	port: 3000,
-	mongoDb: {
-		connectionString: 'mongodb://localhost:27017/tt3k',
-		collections: {
-			Members: 'Members',
-			Scores: 'Scores'
-		}
-	}
-};
+module.exports = (function() {
+
+	var config = process.env.NODE_ENV === 'production'
+		? require('./prod.config')
+		: require('./dev.config');
+
+	return config;
+})();
