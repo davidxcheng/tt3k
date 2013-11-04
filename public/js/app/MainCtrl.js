@@ -1,4 +1,4 @@
-define(['libs/angularjs.1.0.6.min', 'libs/jQuery.1.9.1.min'], function(ng, $) {
+define(['libs/angularjs.1.0.6.min', 'libs/jquery.1.9.1.min'], function(ng, $) {
 
 	var refreshMenu = function() {
 		$.get('/menu', function(menuItems) {
