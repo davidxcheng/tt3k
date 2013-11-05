@@ -17,7 +17,7 @@ block content
 						.player {{ player1 }}
 						.vs vs
 						.player.opponent
-							input(type='text', id='player2', class='span5', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1)
+							input.span5(type='text', id='player2', autofocus='autofocus', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1)
 					#sets
 						.set
 							.games

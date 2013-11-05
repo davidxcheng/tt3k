@@ -15,7 +15,7 @@ a {
 }
 a:link,
 a:visited {
-  color: #f0f;
+  color: #adff2f;
 }
 a:hover,
 a:active {
@@ -32,7 +32,7 @@ h3 {
   font: 80px 'Yanone Kaffeesatz';
   text-transform: uppercase;
   color: #000;
-  text-shadow: -4px 4px 0 #d7d7d7;
+  text-shadow: -3px 3px 0 #d7d7d7;
 }
 #main-menu {
   background: #000;
@@ -54,10 +54,10 @@ h3 {
   color: #fff;
 }
 #main-menu a:hover {
-  color: #f0f;
+  color: #adff2f;
 }
 #main-menu a.active {
-  color: #f0f;
+  color: #adff2f;
 }
 #main-wrapper {
   max-width: 900px;
