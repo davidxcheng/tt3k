@@ -3,7 +3,6 @@ extends layout
 block content
 	script(id='LatestScoresView', type='text/ng-template')
 		#start
-			h1 Latest Scores
 			div.latest-score(data-ng-repeat='score in scores')
 				span.faded.subtle.date {{score.gameday}}
 				| {{score.player1}}
@@ -17,33 +16,34 @@ block content
 					#players
 						.player {{ player1 }}
 						.vs vs
-						.player
-							input(type='text', id='player2', class='span5', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1, required)
-					.set
-						.games
-							input(type='text', maxlength=2, tabindex=2, id='set1-player1', pattern='[0-9]{1,2}', required)
-						.games
-							input(type='text', maxlength=2, tabindex=3, id='set1-player2', pattern='[0-9]{1,2}', required)
-					.set
-						.games
-							input(type='text', maxlength=2, tabindex=4, id='set2-player1')
-						.games
-							input(type='text', maxlength=2, tabindex=5, id='set2-player2')
-					.set
-						.games
-							input(type='text', maxlength=2, tabindex=6, id='set3-player1')
-						.games
-							input(type='text', maxlength=2, tabindex=7, id='set3-player2')
-					.set
-						.games
-							input(type='text', maxlength=2, tabindex=8, id='set4-player1')
-						.games
-							input(type='text', maxlength=2, tabindex=9, id='set4-player2')
-					.set
-						.games
-							input(type='text', maxlength=2, tabindex=10, id='set5-player1')
-						.games
-							input(type='text', maxlength=2, tabindex=11, id='set5-player2')
+						.player.opponent
+							input(type='text', id='player2', class='span5', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1)
+					#sets
+						.set
+							.games
+								input(type='text', maxlength=2, tabindex=2, id='set1-player1', pattern='[0-9]{1,2}', required)
+							.games
+								input(type='text', maxlength=2, tabindex=3, id='set1-player2', pattern='[0-9]{1,2}', required)
+						.set
+							.games
+								input(type='text', maxlength=2, tabindex=4, id='set2-player1')
+							.games
+								input(type='text', maxlength=2, tabindex=5, id='set2-player2')
+						.set
+							.games
+								input(type='text', maxlength=2, tabindex=6, id='set3-player1')
+							.games
+								input(type='text', maxlength=2, tabindex=7, id='set3-player2')
+						.set
+							.games
+								input(type='text', maxlength=2, tabindex=8, id='set4-player1')
+							.games
+								input(type='text', maxlength=2, tabindex=9, id='set4-player2')
+						.set
+							.games
+								input(type='text', maxlength=2, tabindex=10, id='set5-player1')
+							.games
+								input(type='text', maxlength=2, tabindex=11, id='set5-player2')
 					.subtle on
 					.gameday
 						.control-group.input-append

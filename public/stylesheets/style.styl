@@ -26,7 +26,6 @@ a:link, a:visited
 a:hover, a:active
 	color lime
 
-
 h1, h2, h3
 	font-family 'League Gothic', Arial
 	text-transform uppercase
@@ -83,10 +82,12 @@ h1, h2, h3
 
 #players
 	display inline-block
-	margin-right 40px
-	margin-top 10px
+	margin 4px
 
-.player input[type=text]
+.opponent
+	margin-top 6px
+
+.player > input[type=text]
 	height auto
 	border none
 	font normal 50px "Georgia"
@@ -94,14 +95,16 @@ h1, h2, h3
 	box-shadow none
 	color black
 
-.set
-	position relative
+#sets
 	display inline-block
-	top -2px
+	vertical-align top
+
+.set
+	display inline-block
 	margin-right 8px
 
 .games
-	margin-bottom 10px
+	margin-bottom 6px
 
 .games input[type=text]
 	border none
@@ -119,13 +122,18 @@ h1, h2, h3
 .player
 	font normal 50px "Georgia"
 	text-align left
+	background transparent
 
 #player2
 	margin-left -6px
+	background transparent
 
 .vs, .subtle
 	color #999
 	font italic 20px "Georgia"
+
+.vs
+	margin 4px 0 -8px
 
 .subtle
 	font-size 16px
@@ -139,3 +147,6 @@ h1, h2, h3
 
 .buttons
 	margin-top 30px
+
+.brdr
+	border 1px solid red
