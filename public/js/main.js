@@ -4,7 +4,8 @@ require.config({
 
     // Except if the module ID
     paths: {
-    	libs: '../libs'
+    	libs: '../libs',
+    	moment: '../libs/moment.min'
     },
 
 	shim: {
