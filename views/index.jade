@@ -12,46 +12,46 @@ block content
 	script(id='ScoresView', type='text/ng-template')
 		#scores
 			#match
-				form#match-report
+				form#match-report(data-ng-submit=('submitScore()'))
 					#players
-						.player {{ player1 }}
+						.player {{ match.player1 }}
 						.vs vs
 						.player.opponent
-							input.span5(type='text', id='player2', autofocus='autofocus', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1)
+							input.span5(type='text', autofocus, data-ng-model='match.player2', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1, required)
 					#sets
 						.set
 							.games
-								input(type='text', maxlength=2, tabindex=2, id='set1-player1', pattern='[0-9]{1,2}', required)
+								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer1', maxlength=2, tabindex=2, pattern='[0-9]{1,2}', required)
 							.games
-								input(type='text', maxlength=2, tabindex=3, id='set1-player2', pattern='[0-9]{1,2}', required)
+								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer2', maxlength=2, tabindex=3, pattern='[0-9]{1,2}', required)
 						.set
 							.games
-								input(type='text', maxlength=2, tabindex=4, id='set2-player1')
+								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer1', maxlength=2, tabindex=4)
 							.games
-								input(type='text', maxlength=2, tabindex=5, id='set2-player2')
+								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer2', maxlength=2, tabindex=5)
 						.set
 							.games
-								input(type='text', maxlength=2, tabindex=6, id='set3-player1')
+								input(type='text', data-ng-model='match.sets[2].gamesWonByPlayer1', maxlength=2, tabindex=6)
 							.games
-								input(type='text', maxlength=2, tabindex=7, id='set3-player2')
+								input(type='text', data-ng-model='match.sets[2].gamesWonByPlayer2', maxlength=2, tabindex=7)
 						.set
 							.games
-								input(type='text', maxlength=2, tabindex=8, id='set4-player1')
+								input(type='text', data-ng-model='match.sets[3].gamesWonByPlayer1', maxlength=2, tabindex=8)
 							.games
-								input(type='text', maxlength=2, tabindex=9, id='set4-player2')
+								input(type='text', data-ng-model='match.sets[3].gamesWonByPlayer2', maxlength=2, tabindex=9)
 						.set
 							.games
-								input(type='text', maxlength=2, tabindex=10, id='set5-player1')
+								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer1', maxlength=2, tabindex=10)
 							.games
-								input(type='text', maxlength=2, tabindex=11, id='set5-player2')
+								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer2', maxlength=2, tabindex=11)
 					.subtle on
 					.gameday
 						.control-group.input-append
-							input(type='text', id='when', data-ng-model='match.date', data-toggle='datepicker', required)
-							button(type='button', class='btn', data-toggle='datepicker')
+							input(type='text', id='when', data-toggle='datepicker', required)
+							button.btn(type='button', data-toggle='datepicker')
 								i.icon-calendar
 					.buttons
-						button(type='button', id='btnSubmitScore', class='btn btn-success btn-block', ng-click='submitScore()') Submit Score
+						button.btn.btn-success.btn-block(type='submit', id='btnSubmitScore', ng-click='submitScore()') Submit Score
 
 		#feedback.hide.alert.alert-warning
 			{{ feedback }}
@@ -67,7 +67,7 @@ block content
 						input(type='password', data-ng-model='credentials.password', placeholder='Password')
 				.control-group
 					.controls
-						button(type='submit', data-ng-click='login()', class='btn btn-success') Login
+						button.btn.btn-success(type='submit', data-ng-click='login()') Login
 				#feedback.hide.alert.alert-error
 					b Oh no!
 					{{ feedback }}
