@@ -1,7 +1,8 @@
 define([
+	'ScoreValidator',
 	'libs/angularjs.1.0.6.min',
 	'libs/bootstrap-datepicker',
-	'moment'], function(ng, dp, moment) {
+	'moment'], function(validator, ng, dp, moment) {
 
 	return function($scope, $http, $location) {
 
@@ -53,33 +54,9 @@ define([
 					$location.path('/login');
 			});
 
-		$scope.validate = function(match) {
-
-			var isInvalid = false;
-
-			if (!match.player2) {
-				isInvalid = true;
-			}
-
-			if (!match.sets[0].gamesWonByPlayer1) {
-				isInvalid = true;
-			}
-
-			if (!match.sets[0].gamesWonByPlayer2) {
-				isInvalid = true;
-			}
-
-			return {
-				failed: isInvalid,
-				message: ":'("
-			};
-		}
-
 		$scope.submitScore = function() {
 
-			$scope.match.gameday = $('#when').val();
-
-			var validation = $scope.validate($scope.match);
+			var validation = validator($scope.match);
 			if (validation.failed) {
 				$scope.feedback = validation.message;
 				$('#feedback').removeClass('hide');
