@@ -25,10 +25,10 @@ define([], function() {
 				throw "How many games did " + match.player2 + " win in the 1st set?";
 
 			match.sets.forEach(function(set) {
-				if (set.gamesWonByPlayer1 !== null && !parseInt(set.gamesWonByPlayer1))
+				if (set.gamesWonByPlayer1 !== null && isNaN(parseInt(set.gamesWonByPlayer1)))
 					throw "Games are digits";
 
-				if (set.gamesWonByPlayer2 !== null && !parseInt(set.gamesWonByPlayer2))
+				if (set.gamesWonByPlayer2 !== null && isNaN(parseInt(set.gamesWonByPlayer2)))
 					throw "Games are digits";
 			})
 		}
