@@ -1,8 +1,9 @@
 define(['libs/angularjs.1.0.6.min'], function(ng) {
 
-	var refreshMenu = function() {
+	var refreshMenu = function(menuItemSelector) {
 		$.get('/menu', function(menuItems) {
 			$('#main-menu').html(menuItems);
+			$(menuItemSelector).addClass('active');
 		});
 	};
 
@@ -12,7 +13,7 @@ define(['libs/angularjs.1.0.6.min'], function(ng) {
 		$scope.login = function() {
 			$http.post('/login', $scope.credentials)
 				.success(function(name) {
-					refreshMenu();
+					refreshMenu('#mnuScores');
 					$location.path('/scores');
 				})
 				.error(function(data, status) {
