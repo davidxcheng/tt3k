@@ -3,7 +3,7 @@ define([
 	'libs/angularjs.1.0.6.min',
 	'libs/bootstrap-datepicker',
 	'moment',
-	'libs/bootstrap.min'], function(validator, ng, dp, moment) {
+	'libs/ng-ui-typeahead'], function(validator, ng, dp, moment) {
 
 	return function($scope, $http, $location) {
 
