@@ -81,6 +81,7 @@ h3 {
 #players {
   display: inline-block;
   margin: 4px;
+  color: #000;
 }
 .opponent {
   margin-top: 6px;
