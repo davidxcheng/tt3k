@@ -17,7 +17,7 @@ block content
 						.player {{ match.player1 }}
 						.vs vs
 						.player.opponent
-							input.span5(type='text', autofocus, data-ng-model='match.player2', data-provide='typeahead', autocomplete='off', data-items=8, data-source='{{ opponents }}', placeholder='Opponent', tabindex=1, required)
+							input.span5(type='text', autofocus, data-ng-model='match.player2', autocomplete='off', placeholder='Opponent', tabindex=1, required)
 					#sets
 						.set
 							.games
@@ -48,7 +48,7 @@ block content
 					.gameday
 						.control-group.input-append
 							input(type='text', id='when', data-ng-model='match.gameday', required)
-							button.btn(type='button', data-toggle='datepicker')
+							button.btn(type='button', data-toggle=datepicker')
 								i.icon-calendar
 					.buttons
 						button.btn.btn-success.btn-block(type='submit', id='btnSubmitScore', ng-click='submitScore()') Submit Score

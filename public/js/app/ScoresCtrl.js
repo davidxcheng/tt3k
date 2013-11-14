@@ -2,7 +2,8 @@ define([
 	'ScoreValidator',
 	'libs/angularjs.1.0.6.min',
 	'libs/bootstrap-datepicker',
-	'moment'], function(validator, ng, dp, moment) {
+	'moment',
+	'libs/bootstrap.min'], function(validator, ng, dp, moment) {
 
 	return function($scope, $http, $location) {
 
@@ -47,7 +48,10 @@ define([
 					$scope.match.player1 = user.name;
 					$http.get('/players')
 						.success(function(data, status) {
-							$scope.opponents = data;
+							console.dir(data);
+							$('.opponent > input[type=text]').typeahead({
+								source: data
+							});
 						});
 				}
 				else
