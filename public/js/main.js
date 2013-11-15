@@ -15,8 +15,8 @@ require.config({
 		'libs/bootstrap-datepicker': {
 			deps: ['libs/jquery.1.9.1.min']
 		},
-		'libs/bootstrap.min': {
-			deps: ['libs/jquery.1.9.1.min']
+		'libs/ng-ui-typeahead': {
+			deps: ['libs/angularjs.1.0.6.min']
 		},
 		'libs/angularjs.1.0.6.min': {
 			deps: ['libs/jquery.1.9.1.min'],

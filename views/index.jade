@@ -17,7 +17,7 @@ block content
 						.player {{ match.player1 }}
 						.vs vs
 						.player.opponent
-							input.span5(type='text', autofocus, data-ng-model='match.player2', autocomplete='off', placeholder='Opponent', tabindex=1, required)
+							input.span5(type='text', autofocus, data-ng-model='match.player2', typeahead='player in opponents| filter:$viewValue | limitTo:8', autocomplete='off', placeholder='Opponent', tabindex=1, required)
 					#sets
 						.set
 							.games

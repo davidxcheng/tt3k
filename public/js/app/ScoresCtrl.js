@@ -41,6 +41,7 @@ define([
 				}
 			]
 		};
+		$scope.opponents = [];
 
 		$http.get('/member/current')
 			.success(function(user, status) {
@@ -48,10 +49,7 @@ define([
 					$scope.match.player1 = user.name;
 					$http.get('/players')
 						.success(function(data, status) {
-							console.dir(data);
-							$('.opponent > input[type=text]').typeahead({
-								source: data
-							});
+							$scope.opponents = data;
 						});
 				}
 				else
