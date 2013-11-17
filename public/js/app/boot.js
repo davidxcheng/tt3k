@@ -16,7 +16,7 @@ define([
 			 logoutCtrl,
 			 router) {
 
-		return ng.module('tt3k', [])
+		return ng.module('tt3k', ['ui.bootstrap'])
 			.controller('MainCtrl', mainCtrl)
 			.controller('LatestScoresCtrl', latestScoresCtrl)
 			.controller('MemberCtrl', memberCtrl)

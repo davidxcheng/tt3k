@@ -15,7 +15,7 @@ require.config({
 		'libs/bootstrap-datepicker': {
 			deps: ['libs/jquery.1.9.1.min']
 		},
-		'libs/ng-ui-typeahead': {
+		'libs/ui.bootstrap.tpls.0.6.0': {
 			deps: ['libs/angularjs.1.0.6.min']
 		},
 		'libs/angularjs.1.0.6.min': {
@@ -32,6 +32,7 @@ require.config({
 require(['libs/angularjs.1.0.6.min', 'boot'], function(ng) {
 
 	ng.element(document).ready(function() {
+		// bootstrap replaces the ng-app directive. the 'tt3k' module is registered in boot.js.
 		ng.bootstrap(document, ['tt3k']);
 	});
 
