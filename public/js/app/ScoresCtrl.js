@@ -7,7 +7,7 @@ define([
 
 	return function($scope, $http, $location) {
 
-		$('#when').datepicker({ format: 'yyyy-mm-dd' });
+		$('.datepicker').datepicker({ format: 'yyyy-mm-dd' });
 
 		$scope.match = {
 			gameday: new moment().format('YYYY-MM-DD'),

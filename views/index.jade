@@ -46,10 +46,11 @@ block content
 								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer2', maxlength=2, tabindex=11)
 					.subtle on
 					.gameday
-						.control-group.input-append
-							input(type='text', id='when', data-ng-model='match.gameday', required)
-							button.btn(type='button', data-toggle=datepicker')
+						.control-group.input-append.date.datepicker
+							input(type='text', data-ng-model='match.gameday', required)
+							button.btn(type='button')
 								i.icon-calendar
+
 					.buttons
 						button.btn.btn-success.btn-block(type='submit', id='btnSubmitScore', ng-click='submitScore()') Submit Score
 
