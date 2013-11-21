@@ -73,10 +73,6 @@ module.exports = {
 				});
 			});
 
-			server.get('/trial', function(req, res) {
-				res.render('ta');
-			});
-
 			server.get('/member/current', function(req, res) {
 				res.send(req.session.user);
 			});
