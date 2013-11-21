@@ -14,7 +14,7 @@ block content
 			#match
 				form#match-report(data-ng-submit=('submitScore()'))
 					#players
-						.player {{ match.player1 }}
+						.player(data-ng-bind='match.player1')
 						.vs vs
 						.player.opponent
 							input.span5(type='text', autofocus, data-ng-model='match.player2', typeahead='player for player in opponents | filter:$viewValue | limitTo:8', autocomplete='off', placeholder='Opponent', tabindex=1, required)
