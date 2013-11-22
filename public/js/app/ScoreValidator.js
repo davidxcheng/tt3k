@@ -1,4 +1,4 @@
-(function(define, scoreValidator) {
+(function(scoreValidator) {
 	// register as AMD/requirejs module
 	if (typeof define == "function" && define.amd)
 		define([], scoreValidator);
@@ -7,7 +7,7 @@
 	if (typeof exports == "object")
 		module.exports = scoreValidator();
 
-})(typeof define == "function" ? define : null, function() {
+})(function() {
 
 	return function(match) {
 
@@ -52,4 +52,3 @@
 		};
 	};
 });
-
