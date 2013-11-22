@@ -1,4 +1,13 @@
-define([], function() {
+(function(define, scoreValidator) {
+	// register as AMD/requirejs module
+	if (typeof define == "function" && define.amd)
+		define([], scoreValidator);
+
+	// register as CommonJS/nodejs module
+	if (typeof exports == "object")
+		module.exports = scoreValidator();
+
+})(typeof define == "function" ? define : null, function() {
 
 	return function(match) {
 
@@ -11,7 +20,7 @@ define([], function() {
 
 		try {
 			if (!match.player2)
-				throw "The name of your opponent must be filled in";
+				throw "Hm, think you forgot to fill out the name of your opponent..";
 
 			// Check that the format of the date is yyyy-MM-dd
 			if (match.gameday.match(/^(\d{4}-\d{2}-\d{2})$/) === null
@@ -43,3 +52,4 @@ define([], function() {
 		};
 	};
 });
+
