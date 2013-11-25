@@ -1,9 +1,10 @@
 define([
 	'ScoreValidator',
+	'GameSetAndMatch',
 	'libs/angularjs.1.0.6.min',
 	'libs/bootstrap-datepicker',
 	'moment',
-	'libs/ui.bootstrap.tpls.0.6.0'], function(validator, ng, dp, moment) {
+	'libs/ui.bootstrap.tpls.0.6.0'], function(validator, gameSetAndMatch, ng, dp, moment) {
 
 	return function($scope, $http, $location) {
 
@@ -71,6 +72,22 @@ define([
 				});
 			$('#btnSubmitScore').attr('disabled', 'disabled')
 		};
+
+		$scope.$on("$routeChangeSuccess", function() {
+			var vs = document.getElementById('vs');
+			// todo: keep handle to callback so that event listener can be removed.
+			document.getElementById('sets')
+				.addEventListener('keyup', function(e) {
+					var winner = gameSetAndMatch($scope.match);
+
+					if (winner > 0)
+						vs.innerText = "defeated";
+					else if (winner < 0)
+						vs.innerText = "lost to";
+					else
+						vs.innerText = "vs";
+				});
+		});
 	};
 
 });
