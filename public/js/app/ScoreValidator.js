@@ -9,7 +9,7 @@
 
 })(function() {
 
-	return function(match) {
+	return function ScoreValidator(match) {
 
 		if (typeof match != "object") {
 			throw new TypeError("Argument 'match' must be an object");
