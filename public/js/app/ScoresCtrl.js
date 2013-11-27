@@ -78,14 +78,25 @@ define([
 			// todo: keep handle to callback so that event listener can be removed.
 			document.getElementById('sets')
 				.addEventListener('keyup', function(e) {
-					var winner = gameSetAndMatch($scope.match);
+					var winner = gameSetAndMatch($scope.match),
+						text;
 
 					if (winner > 0)
-						vs.innerText = "defeated";
+						text = "defeated";
 					else if (winner < 0)
-						vs.innerText = "lost to";
+						text = "lost to";
 					else
-						vs.innerText = "vs";
+						text = "vs";
+
+					if (vs.innerText != text) {
+						vs.classList.remove('fadeIn');
+						vs.classList.remove('fadeAway');
+						vs.classList.add('fadeAway');
+						setTimeout(function fadeIn(text) {
+							vs.innerText = text;
+							vs.classList.add('fadeIn');
+						}, 300, [text]);
+					}
 				});
 		});
 	};
