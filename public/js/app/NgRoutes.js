@@ -1,7 +1,7 @@
 define([
-	'libs/angularjs.1.0.6.min'
+	
 	],
-	function(ng) {
+	function($routeProvider, $locationProvider) {
 		return function($routeProvider, $locationProvider) {
 
 			$routeProvider

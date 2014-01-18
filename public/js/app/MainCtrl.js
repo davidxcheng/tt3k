@@ -1,25 +1,29 @@
-define(['libs/angularjs.1.0.6.min', 'libs/jquery.1.9.1.min'], function(ng, $) {
+define([
+		'libs/angularjs.1.0.6.min',
+		'libs/jquery.1.9.1.min'
+	], 
+	function(ng, $, $scope, $route, $routeParams, $location, $http) {
 
-	var refreshMenu = function() {
-		$.get('/menu', function(menuItems) {
-			$('#main-menu').html(menuItems);
-		});
-	};
+		var refreshMenu = function() {
+			$.get('/menu', function(menuItems) {
+				$('#main-menu').html(menuItems);
+			});
+		};
 
-	$(document).ready(function() {
-		$('#main-menu').on('click', 'a', function(e) {
-			$('#main-menu .active').removeClass('active');
-			$(this).addClass('active');
+		$(document).ready(function() {
+			$('#main-menu').on('click', 'a', function(e) {
+				$('#main-menu .active').removeClass('active');
+				$(this).addClass('active');
+			});
 		});
+
+		return function($scope, $route, $routeParams, $location, $http) {
+
+			$scope.$route = $route;
+			$scope.$location = $location;
+			$scope.$routeParams = $routeParams;
+
+			refreshMenu();
+		};
+
 	});
-
-	return function($scope, $route, $routeParams, $location, $http) {
-
-		$scope.$route = $route;
-		$scope.$location = $location;
-		$scope.$routeParams = $routeParams;
-
-		refreshMenu();
-	};
-
-});

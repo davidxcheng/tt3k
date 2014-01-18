@@ -20,7 +20,7 @@
 
 		try {
 			if (!match.player2)
-				throw "Hm, think you forgot to fill out the name of your opponent..";
+				throw "Hm, think you forgot to fill in the name of your opponent..";
 
 			// Check that the format of the date is yyyy-MM-dd
 			if (match.gameday.match(/^(\d{4}-\d{2}-\d{2})$/) === null

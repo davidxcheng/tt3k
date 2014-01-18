@@ -1,29 +1,30 @@
 {
   "name": "tt3k",
-  "version": "0.0.1-21",
+  "version": "0.0.1-22",
   "author": {
     "name": "David Cheng",
     "email": "davidxcheng@gmail.com"
   },
   "description": "keeps track of your tennis scores",
   "private": true,
+  "subdomain": "chevycheng-tt3k",
+  "engines": {
+    "node": "0.10.x"
+  },
   "dependencies": {
     "express": "3.1.1",
     "jade": "0.28.2",
     "stylus": "0.32.1",
     "mongodb": "1.2.14"
   },
-  "subdomain": "chevycheng-tt3k",
-  "engines": {
-    "node": "0.10.x"
+  "devDependencies": {
+    "mocha": "~1.14.0",
+    "chai": "~1.8.1",
+    "requirejs": "~2.1.9"
   },
   "scripts": {
     "start": "node ./app.js",
-    "test": "tap test/*.js"
-  },
-  "devDependencies": {
-    "tap": "~0.4.6",
-    "mocha": "~1.14.0",
-    "chai": "~1.8.1"
+    "test": "mocha test/*.js",
+    "build-cli-js": "r.js -o rjs.build.js"
   }
 }
