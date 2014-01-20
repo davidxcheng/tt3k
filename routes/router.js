@@ -47,6 +47,7 @@ module.exports = {
 				memberHandler.HandleLogin(credentials, function(success, member) {
 					if (success) {
 						req.session.user = {
+							id: member._id,
 							name: member.name,
 							email: member.email
 						};
