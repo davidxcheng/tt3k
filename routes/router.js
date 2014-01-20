@@ -1,3 +1,5 @@
+var admin = require('../admin');
+
 module.exports = {
 	setup: function(server) {
 			var memberHandler = require('../handlers/members'),
@@ -82,5 +84,8 @@ module.exports = {
 					res.send(players);
 				});
 			});
+
+			server.get('/admin/scores', admin.scores.get);
+			server.del('/admin/scores/:id', admin.scores.remove);
 		}
 }

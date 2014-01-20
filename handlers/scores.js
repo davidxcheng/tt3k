@@ -19,7 +19,6 @@ module.exports = (function() {
 					collection.insert(match, function(err, result) {
 						if (!err)
 							console.log(JSON.stringify(result));
-
 					});
 					cb(err);
 				});
