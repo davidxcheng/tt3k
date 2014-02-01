@@ -86,6 +86,7 @@ module.exports = {
 				});
 			});
 
+			server.get('/admin', admin.get);
 			server.get('/admin/scores', admin.scores.get);
 			server.del('/admin/scores/:id', admin.scores.remove);
 		}

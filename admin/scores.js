@@ -2,7 +2,6 @@ var mongoClient = require('mongodb').MongoClient,
 	dbConfig 	= require('../config').mongoDb;
 
 var get = function (req, res) {
-	console.log(req.get('Accept'));
 	if (req.get('Accept').indexOf('application/json') != -1) {
 		res.header('Content-Type', 'application/json');
 		getScores(req, res);
