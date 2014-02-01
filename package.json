@@ -1,6 +1,6 @@
 {
   "name": "tt3k",
-  "version": "0.0.1-25",
+  "version": "0.0.1-28",
   "author": {
     "name": "David Cheng",
     "email": "davidxcheng@gmail.com"
@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "express": "3.1.1",
-    "jade": "0.28.2",
+    "jade": "1.1.5",
     "stylus": "0.32.1",
     "mongodb": "1.2.14"
   },

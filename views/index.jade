@@ -21,29 +21,29 @@ block content
 					#sets
 						.set
 							.games
-								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer1', maxlength=2, tabindex=2, pattern='\d*', required)
+								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer1', maxlength=2, tabindex=2, pattern='\\d*', required)
 							.games
-								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer2', maxlength=2, tabindex=3, pattern='\d*', required)
+								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer2', maxlength=2, tabindex=3, pattern='\\d*', required)
 						.set
 							.games
-								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer1', maxlength=2, tabindex=4)
+								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer1', maxlength=2, tabindex=4, pattern='\\d*')
 							.games
-								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer2', maxlength=2, tabindex=5)
+								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer2', maxlength=2, tabindex=5, pattern='\\d*')
 						.set
 							.games
-								input(type='text', data-ng-model='match.sets[2].gamesWonByPlayer1', maxlength=2, tabindex=6)
+								input(type='text', data-ng-model='match.sets[2].gamesWonByPlayer1', maxlength=2, tabindex=6, pattern='\\d*')
 							.games
-								input(type='text', data-ng-model='match.sets[2].gamesWonByPlayer2', maxlength=2, tabindex=7)
+								input(type='text', data-ng-model='match.sets[2].gamesWonByPlayer2', maxlength=2, tabindex=7, pattern='\\d*')
 						.set
 							.games
-								input(type='text', data-ng-model='match.sets[3].gamesWonByPlayer1', maxlength=2, tabindex=8)
+								input(type='text', data-ng-model='match.sets[3].gamesWonByPlayer1', maxlength=2, tabindex=8, pattern='\\d*')
 							.games
-								input(type='text', data-ng-model='match.sets[3].gamesWonByPlayer2', maxlength=2, tabindex=9)
+								input(type='text', data-ng-model='match.sets[3].gamesWonByPlayer2', maxlength=2, tabindex=9, pattern='\\d*')
 						.set
 							.games
-								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer1', maxlength=2, tabindex=10)
+								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer1', maxlength=2, tabindex=10, pattern='\\d*')
 							.games
-								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer2', maxlength=2, tabindex=11)
+								input(type='text', data-ng-model='match.sets[4].gamesWonByPlayer2', maxlength=2, tabindex=11, pattern='\\d*')
 					.subtle on
 					.gameday
 						.control-group.input-append.date.datepicker
@@ -82,7 +82,7 @@ block content
 						input(type='text', data-ng-model='member.name', placeholder='FirstName LastName', maxlength=80, required, autofocus)
 				.control-group
 					.controls
-						input(type='text', data-ng-model='member.email', placeholder='Email', pattern='.+@.+\.[a-z]{2,3}', maxlength=80, required)
+						input(type='email', data-ng-model='member.email', placeholder='Email', pattern='.+@.+\\.[a-z]{2,3}', maxlength=80, required)
 				.control-group
 					.controls
 						input(type='password', data-ng-model='member.password', placeholder='Password', pattern='.{6,}', maxlength=80, required)
