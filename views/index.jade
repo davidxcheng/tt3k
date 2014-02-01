@@ -21,9 +21,9 @@ block content
 					#sets
 						.set
 							.games
-								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer1', maxlength=2, tabindex=2, pattern='[0-9]{1,2}', required)
+								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer1', maxlength=2, tabindex=2, pattern='\d*', required)
 							.games
-								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer2', maxlength=2, tabindex=3, pattern='[0-9]{1,2}', required)
+								input(type='text', data-ng-model='match.sets[0].gamesWonByPlayer2', maxlength=2, tabindex=3, pattern='\d*', required)
 						.set
 							.games
 								input(type='text', data-ng-model='match.sets[1].gamesWonByPlayer1', maxlength=2, tabindex=4)
