@@ -1,8 +1,5 @@
 var scores = require('./scores');
 
-var get = function(req, res) {
-};
-
 var get = function (req, res) {
 	if (req.get('Accept').indexOf('application/json') != -1) {
 		res.header('Content-Type', 'application/json');

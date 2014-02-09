@@ -1,4 +1,4 @@
-var admin = require('../admin');
+var admin = require('../admin/srv/');
 
 module.exports = {
 	setup: function(server) {

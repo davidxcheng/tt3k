@@ -1,5 +1,6 @@
-var mongoClient = require('mongodb').MongoClient,
-	dbConfig 	= require('../config').mongoDb;
+var mongodb = require('mongodb'),
+	mongoClient = mongodb.MongoClient,
+	dbConfig 	= require('../../config').mongoDb;
 
 var get = function (req, res) {
 	if (req.get('Accept').indexOf('application/json') != -1) {
@@ -29,11 +30,15 @@ function getScores(req, res) {
 }
 
 var remove = function remove(req, res) {
-	var id = req.body.id;
+	var id = req.params.id;
 	mongoClient.connect(dbConfig.connectionString, function(err, db) {
-		//db.remove({ _id: id });
-		cosole.log(id);
-		res.send(404);
+		db.collection(dbConfig.collections.Scores, function(err, scores) {
+			if (err) throw err;
+				
+			scores.remove({ _id: new mongodb.ObjectID(id) }, function(err, result) {
+				res.send(200);
+			});
+		});
 	});
 };
 

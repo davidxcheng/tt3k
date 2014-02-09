@@ -1,19 +1,28 @@
-doctype 5
+doctype html
 html
 	head
 		title tt3k admin
+		META(NAME='ROBOTS', CONTENT='NOINDEX, NOFOLLOW')
 	body
 		header
 			ul#admin-menu
 				
-		#main
-				
-		script(type='text/tmpl', id='menu-item-tmpl')
-				li
-					a(href='{path}') {text}
+		#main				
+			li
+				a(href='/admin/scores', class='js-nav') Scores
 
-		script(type='text/tmpl', id='scores')
+		#court
+
+		script(type='text/tmpl', id='scoresTmpl')
+			table
+				thead
+					tr
+						th Date
+						th Player 1
+						th Player 2
+						th &nbsp;
+				tbody#scores
+
 		
-		script(src='/js/libs/jquery.1.9.1.min.js')
-		script(src='/js/libs/riot.js')
-		script(src='/js/app/admin/admin.js')
+		script(src='/build.js')
+		script require('tt3k-admin')
