@@ -1,10 +1,6 @@
 var $ = require('jquery');
 
-window.onpopstate = function(e) {
-	console.log(e);
-};
-
-$(document).on('click', '.js-nav', function(e) {
+$(document).on('dragstart', function(e) {
 	e.preventDefault();
 	var path = e.target.pathname;
 
@@ -13,11 +9,14 @@ $(document).on('click', '.js-nav', function(e) {
 		accept: 'application/json',
 		dataType: 'json',
 		success: function(scores) {
-			history.pushState(null, 'Scores', path);
+			history.pushState(null, 'title', path);
 			var tmpl = $('#scoresTmpl').html(),
 				rows = scores.map(function(score) {
 					return '<tr><td>' + score.gameday + '</td><td>' + score.player1 + '</td><td>' + score.player2 + '</td><td><a href="/admin/scores/' + score._id + '" class="js-nav">Del</a></td></tr>';
 				}).join();
+
+			$('#ken').html(renderScores(scores));
+
 			$('#court').html(tmpl);
 			$('#scores').html(rows);
 			$('#scores').on('click', 'a', deleteScore);
@@ -28,7 +27,6 @@ $(document).on('click', '.js-nav', function(e) {
 		e.preventDefault();
 		e.stopPropagation();
 		var path = e.target.pathname;
-		console.log(path);
 
 		$.ajax({
 			type: 'DELETE',
@@ -37,22 +35,15 @@ $(document).on('click', '.js-nav', function(e) {
 				console.log('yay');
 			}		
 		});
+	}
 
-		e.stop
+	function renderScores(scores) {
+		var tmpl = require('./template');
+
+		var rows = scores.map(function(score) {
+			return '<tr><td>' + score.gameday + '</td><td>' + score.player1 + '</td><td>' + score.player2 + '</td><td><a href="/admin/scores/' + score._id + '" class="js-nav">Del</a></td></tr>';
+		}).join();
+
+		return tmpl;
 	}
 });
-
-// $(document).ready(function() {
-// 	var tmpl = $('#menu-item-tmpl').html();
-
-// 	$.ajax({
-// 		url: document.location.href,
-// 		accept: 'application/json',
-// 		dataType: 'json',
-// 		success: function(menuItems) {
-// 			$('#admin-menu').html(menuItems.reduce(function(concat, current) {
-// 				return concat += $.render(tmpl, current);
-// 			}, ''));
-// 		}
-// 	});
-// });

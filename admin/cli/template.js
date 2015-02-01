@@ -1,1 +1,1 @@
-module.exports = '';
+module.exports = '<h2>Scores</h2>\n<table>\n	<thead>\n		<tr>\n			<th>Date</th>\n			<th>Player 1</th>\n			<th>Player 2</th>\n		</tr>\n	</thead>\n	<tbody id=\'mjau\'>\n		\n	</tbody>\n</table>';

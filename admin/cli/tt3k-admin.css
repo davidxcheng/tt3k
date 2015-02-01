@@ -1,0 +1,14 @@
+body {
+	margin: 50px;
+}
+
+#ken {
+	border: 1px solid red;
+	height: 100px;
+}
+
+#ben {
+	border: 1px solid lime;
+	height: 50%;
+	width: 50%;
+}
